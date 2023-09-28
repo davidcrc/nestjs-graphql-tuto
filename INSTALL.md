@@ -21,3 +21,46 @@ pnpm i @nestjs/graphql @nestjs/apollo @apollo/server graphql
 ```
 
 - WE can use code first or Schema first, it depends from project (code first )
+
+## Add Prisma
+
+```bash
+pnpm i prisma --save-dev
+```
+
+```bash
+npx prisma init
+```
+
+```bash
+pnpm i @prisma/client
+```
+
+- create prisma.service.ts
+
+```ts
+import { Injectable, OnModuleInit } from '@nestjs/common';
+import { PrismaClient } from '@prisma/client';
+
+@Injectable()
+export class PrismaService extends PrismaClient implements OnModuleInit {
+  async onModuleInit() {
+    await this.$connect();
+  }
+}
+```
+
+- Add PrismaService to PostsModule:
+
+```ts
+@Module({
+  providers: [PostsService, PostsResolver, PrismaService],
+})
+export class PostsModule {}
+```
+
+- Then create models for prisma
+
+```bash
+npx prisma migrate dev --name init
+```
