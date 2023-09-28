@@ -58,16 +58,36 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Queries
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```gql
+query Posts {
+  posts {
+    title
+    id
+    content
+  }
+}
+```
 
-## Stay in touch
+```gql
+mutation createPost {
+  createPost(postInput: { title: "z", content: "fisrt content" }) {
+    id
+    title
+    content
+  }
+}
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Mutations
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+```gql
+query getPostByID {
+  post(id: 1) {
+    id
+    title
+    content
+  }
+}
+```

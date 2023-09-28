@@ -11,6 +11,12 @@ export class PostsService {
     return this.prismaService.post.findMany({});
   }
 
+  async findPostById(id: number) {
+    return this.prismaService.post.findUnique({
+      where: { id },
+    });
+  }
+
   createPost(post: CreatePostInput) {
     const newPost = this.prismaService.post.create({
       data: {
