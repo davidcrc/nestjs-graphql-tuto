@@ -64,3 +64,15 @@ export class PostsModule {}
 ```bash
 npx prisma migrate dev --name init
 ```
+
+## Add validations
+
+```bash
+pnpm i --save class-validator class-transformer
+```
+
+- add on main.ts
+
+```ts
+app.useGlobalPipes(new ValidationPipe());
+```
