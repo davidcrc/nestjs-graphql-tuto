@@ -24,7 +24,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Basic Nestjs + graphql + Prisma, authors and posts module, with cycle dependency solved
 
 ## Installation
 
