@@ -29,7 +29,7 @@
 ## Installation
 
 ```bash
-$ npm install
+$ pnpm install
 ```
 
 ## Running the app
@@ -63,19 +63,45 @@ $ npm run test:cov
 ```gql
 query Posts {
   posts {
-    title
     id
+    title
     content
+    authorId
+    author {
+      id
+      name
+      email
+      # posts{
+      #   title
+      # }
+    }
   }
 }
 ```
 
 ```gql
 mutation createPost {
-  createPost(postInput: { title: "z", content: "fisrt content" }) {
+  createPost(
+    postInput: { title: "zzzzz", content: "weee content", authorId: 1 }
+  ) {
     id
     title
     content
+    authorId
+  }
+}
+```
+
+```gql
+query authors {
+  authors {
+    id
+    name
+    email
+    posts {
+      id
+      title
+    }
   }
 }
 ```
@@ -88,6 +114,20 @@ query getPostByID {
     id
     title
     content
+  }
+}
+```
+
+```gql
+mutation createAuthor {
+  createAuthor(createAuthorInput: { name: "David", email: "ehhe" }) {
+    id
+    name
+    email
+    posts {
+      id
+      title
+    }
   }
 }
 ```

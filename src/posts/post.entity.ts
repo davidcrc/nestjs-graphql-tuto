@@ -1,4 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { IsBoolean, IsInt } from 'class-validator';
+import { Author } from '../authors/entities/author.entity';
 
 @ObjectType()
 export class Post {
@@ -10,4 +12,15 @@ export class Post {
 
   @Field({ nullable: true })
   content?: string;
+
+  @IsBoolean()
+  @Field()
+  published?: boolean;
+
+  @IsInt()
+  @Field(() => Int, { nullable: true })
+  authorId: number;
+
+  @Field(() => Author, { nullable: true })
+  author?: Author;
 }

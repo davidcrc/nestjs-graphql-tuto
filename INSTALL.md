@@ -76,3 +76,15 @@ pnpm i --save class-validator class-transformer
 ```ts
 app.useGlobalPipes(new ValidationPipe());
 ```
+
+## Resource
+
+- graphql-api code first
+
+```bash
+nest g resource authors
+```
+
+- NOTE: for cycle dependecy add:
+
+https://docs.nestjs.com/fundamentals/circular-dependency
